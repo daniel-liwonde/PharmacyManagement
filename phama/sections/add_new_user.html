@@ -1,0 +1,145 @@
+<!-- supplier details content -->
+<!-- supplier name control -->
+<div class="row" style="margin-left:4%">
+  <form>
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text "><i class="fas fa-user text-white"></i></span></span>
+              </div>
+    <input type="text" class="form-control" placeholder="First Name" id="user_fname" required >
+</div>
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user text-white"></i></span>
+              </div>
+    <input type="text" class="form-control" placeholder="last name" id="user_lname" required>
+   
+  </div>
+  
+<!-- supplier contact number control -->
+<div class="row col col-md-12">
+  <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-phone text-white"></i></span>
+              </div>
+    <input type="number" class="form-control" placeholder="Contact Number" id="user_contact_number" required>
+    
+  </div>
+</div>
+<!-- supplier email control -->
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope text-white"></i></span>
+              </div>
+    <input type="email" autocomplete="off" class="form-control" placeholder="Email" id="user_email" required>
+</div>
+<!-- supplier contact number control -->
+   <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user-gear text-white"></i></span>
+              </div>
+    <select class="form-control" placeholder="user section" id="user_section"  required >
+      <option value=""> Select Section</option>
+      <option value="1">General</option>
+      <option value="2">Private</option>
+    </select>
+    </div>
+    <code class="text-danger small font-weight-bold float-right" id="section_error" style="display: none;"></code>
+  
+
+<!-- user roles control -->
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user-gear text-white"></i></span>
+              </div>
+              <select class="form-control"  id="user_role" required>
+      <option value=""> Select Role</option>
+      <option value="1">Admin</option>
+      <option value="2">Attendant</option>
+          <option value="3">Pharmacisit</option>
+    </select>
+            </div> <!-- input-group class -->
+           
+            <!--end of user role-->
+
+
+
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user text-white"></i></span>
+              </div>
+               <input type="text" class="form-control" aria-autocomplete="none" autocomplete="off" placeholder="username" id="username" required>
+            </div> <!-- input-group class -->
+           
+<!-- supplier contact number control -->
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-lock text-white"></i></span>
+              </div>
+              <input type="password" class="form-control" placeholder="password" id="user_password" required>
+            </div> <!-- input-group class -->
+            <code class="text-danger small font-weight-bold float-right" id="password_error" style="display: none;"></code>
+<div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-lock text-white"></i></span>
+              </div>
+              <input type="password" class="form-control" placeholder="Confirm" id="confirm_password" required>
+            </div> <!-- input-group class -->
+            <code class="text-danger small font-weight-bold float-right" id="confirm_passwod_error" style="display: none;"></code>
+<!-- supplier details content end -->
+
+<div class="col col-md-12">
+  <hr class="col-md-12 float-left" style="padding: 0px; width: 95%; border-top: 2px solid  #02b6ff;">
+</div>
+
+<!-- new user button -->
+<div class="row col col-md-12">
+  &emsp;
+  <div class="form-group m-auto">
+    <button id="addUser" class="btn btn-primary form-control set" > <i class="fa fa-circle-plus"></i>&nbsp;ADD</button>
+  </div>
+  </form>
+  <!--
+  &emsp;
+  <div class="form-group">
+    <button class="btn btn-success form-control">Save and Add Another</button>
+  </div>
+  -->
+</div>
+<!-- result message -->
+<div id="msg" class="col-md-12 h5 text-success font-weight-bold text-center" style="font-family: sans-serif;"></div>
+</div>
+<script>
+   $(document).ready(function () {
+                                    $("#addUser").click(function (e) {
+                                      e.preventDefault();
+                                      alert("hello");
+                                        $.ajax({
+                                            url:'php/add_new_user.php',
+                                            method: 'GET',
+                                            data:{pCat:$("#pcategory").val(),
+                                            contact_number:$("#user_contact_number").val(),
+                                             fname:$("#user_fname").val(),
+                                             lname:$("#user_lname").val(),
+                                             $user_role : $("#user_role").val(),
+                                              $user_email : $("#user_email").val(),
+                                              $user_password : $("#user_password").val(),
+                                            $username :$("#username").val(),
+                                            $section :$("#user_section").val(),
+                                            $cpassword: $("#confirm_password").val()
+                                            },
+                                            success: function (response) {
+                                          
+                                              $("#msg").html(response);
+                                              
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                              
+                                                    $("#msg").html("Request failed: " + textStatus + ", " + errorThrown);
+                                              
+
+                                            }
+                                        });
+                                    });
+                                });
+</script>

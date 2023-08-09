@@ -1,0 +1,86 @@
+<!-- customer details content -->
+<!-- customer name control -->
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="customer_name">Customer Name :</label>
+    <input type="text" class="form-control" placeholder="Name" id="customer_name" onkeyup="validateName(this.value, 'name_error');">
+    <code class="text-danger small font-weight-bold float-right" id="name_error" style="display: none;"></code>
+  </div>
+</div>
+<!-- customes's doctor name -->
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="dbirth">Date of Birth :</label>
+    <input type="date" class="form-control"  id="dbirth" onblur="checkDate(this.value, 'dbirth_error');">
+    <code class="text-danger small font-weight-bold float-right" id="dbirth_error" style="display: none;"></code>
+  </div>
+
+
+</div>
+<!-- customer contact number control -->
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="customer_contact_number">Contact Number :</label>
+    <input type="number" class="form-control" placeholder="Contact Number" id="contact_number" onblur="validateContactNumber(this.value, 'contact_number_error');">
+    <code class="text-danger small font-weight-bold float-right" id="contact_number_error" style="display: none;"></code>
+  </div>
+</div>
+
+<!-- customer address control -->
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="customer_gender">Gender :</label>
+    <select class="form-control" placeholder="gender" id="gender" onblur="notNull(this.value, 'gender_error');">
+     <option value="">Select gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+    <code class="text-danger small font-weight-bold float-right" id="gender_error" style="display: none;"></code>
+  </div>
+</div>
+
+<!-- customes's doctor name -->
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="village">Village :</label>
+    <input type="text" class="form-control" placeholder="Village" id="village" onkeyup="validateName(this.value, 'village_error');">
+    <code class="text-danger small font-weight-bold float-right" id="village_error" style="display: none;"></code>
+  </div>
+</div>
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="TA">Traditional Authority :</label>
+    <input type class="form-control" placeholder="TA" id="TA" onblur="validateName(this.value, 'TA_error');"> 
+    <code class="text-danger small font-weight-bold float-right" id="TA_error" style="display: none;"></code>
+  </div>
+</div>
+<!-- customes's doctor name -->
+<div class="row col col-md-12">
+  <div class="col col-md-12 form-group">
+    <label class="font-weight-bold" for="district">District :</label>
+    <textarea class="form-control" placeholder="District" id="district" onblur="validateName(this.value, 'district_error');"></textarea>
+    <code class="text-danger small font-weight-bold float-right" id="district_error" style="display: none;"></code>
+  </div>
+</div>
+<!-- customer details content end -->
+
+<!-- horizontal line -->
+<div class="col col-md-12">
+  <hr class="col-md-12 float-left" style="padding: 0px; width: 95%; border-top: 2px solid  #02b6ff;">
+</div>
+
+<!-- form submit button -->
+<div class="row col col-md-12">
+  &emsp;
+  <div class="form-group m-auto">
+    <button class="btn btn-primary set" onclick="addCustomer();"><i class="fa fa-circle-plus"></i>&nbsp;ADD</button>
+  </div>
+  <!--
+  &emsp;
+  <div class="form-group">
+    <button class="btn btn-success form-control">Save and Add Another</button>
+  </div>
+  -->
+</div>
+<!-- result message -->
+<div id="customer_acknowledgement" class="col-md-12 h5 text-success font-weight-bold text-center" style="font-family: sans-serif;"></div>
